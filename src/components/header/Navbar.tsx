@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Translations } from "../types/Translationx";
 import { Locale } from "@/i18n.config";
 import { Menu, XIcon } from "lucide-react";
@@ -8,6 +8,8 @@ import { Button } from "../ui/button";
 import LanguageSwitcher from "./language-switcher";
 import { usePathname } from "next/navigation";
 import Link from "../link/Link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import {
   Popover,
@@ -15,7 +17,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { FaArrowDown } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = ({
   translations,
@@ -26,6 +27,14 @@ const Navbar = ({
 }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-out-quad',
+      once: true,
+    });
+  }, []);
 
   const links = [
     {
@@ -46,7 +55,7 @@ const Navbar = ({
   ];
 
   return (
-    <nav >
+    <nav>
       {/* Hamburger menu button */}
       <Button
         variant="secondary"
@@ -57,81 +66,65 @@ const Navbar = ({
         <Menu className="!w-6 !h-6" />
       </Button>
 
-      {/* Mobile menu with animations */}
-      <AnimatePresence>
-        {openMenu && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25 }}
-            className="fixed inset-0 z-50 bg-primary/90 backdrop-blur-sm lg:hidden"
-          >
-            <motion.ul
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="h-full flex flex-col items-center justify-center gap-8 relative"
+      {/* Mobile menu with AOS animations */}
+      {openMenu && (
+        <div 
+          className="fixed inset-0 z-50 bg-primary/90 backdrop-blur-sm lg:hidden"
+          data-aos="fade-left"
+        >
+          <ul className="h-full flex flex-col items-center justify-center gap-8 relative">
+            {/* Close button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="absolute top-6 right-6 text-white hover:bg-white/10"
+              onClick={() => setOpenMenu(false)}
             >
-              {/* Close button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute top-6 right-6 text-white hover:bg-white/10"
-                onClick={() => setOpenMenu(false)}
-              >
-                <XIcon className="!w-8 !h-8" />
-              </Button>
+              <XIcon className="!w-8 !h-8" />
+            </Button>
 
-              {/* Menu links with staggered animation */}
-              {links.map((link, index) => (
-                <motion.li
-                  key={link.id}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 * index }}
+            {/* Menu links with staggered animation */}
+            {links.map((link, index) => (
+              <li 
+                key={link.id}
+                data-aos="fade-up"
+                data-aos-delay={50 * index}
+              >
+                <Link
+                  onClick={() => setOpenMenu(false)}
+                  className={`text-xl lg:text-md font-semibold hover:text-primary duration-200 transition-colors ${
+                    pathname === link.href ? "text-blue-500" : "text-white"
+                  }`}
+                  href={link.href}
                 >
-                  <Link
-                    onClick={() => setOpenMenu(false)}
-                    className={`text-xl lg:text-md font-semibold   hover:text-primary duration-200 transition-colors ${
-                      pathname === link.href ? "text-blue-500" : "text-white"
-                    }`}
-                    href={link.href}
-                  >
-                    {link.title}
-                  </Link>
-                </motion.li>
-              ))}
+                  {link.title}
+                </Link>
+              </li>
+            ))}
 
-              {/* Services dropdown */}
-              <motion.li
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.1 * links.length }}
-              >
-                <Services locale={locale} translations={translations} mobile />
-              </motion.li>
+            {/* Services dropdown */}
+            <li data-aos="fade-up" data-aos-delay={50 * links.length}>
+              <Services locale={locale} translations={translations} mobile />
+            </li>
 
-              {/* Language switcher */}
-              <motion.li
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.1 * (links.length + 1) }}
-                className="mt-8"
-              >
-                <LanguageSwitcher />
-              </motion.li>
-            </motion.ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {/* Language switcher */}
+            <li 
+              data-aos="fade-up" 
+              data-aos-delay={50 * (links.length + 1)}
+              className="mt-8"
+            >
+              <LanguageSwitcher />
+            </li>
+          </ul>
+        </div>
+      )}
 
       {/* Desktop menu */}
       <ul className="hidden lg:flex items-center justify-center gap-10">
         {links.map((link) => (
           <li key={link.id}>
             <Link
-              className={`font-semibold text-xl  hover:text-primary duration-200 transition-colors ${
+              className={`font-semibold text-xl hover:text-primary duration-200 transition-colors ${
                 pathname === link.href ? "text-primary" : "text-white"
               }`}
               href={link.href}
@@ -180,35 +173,27 @@ const Services = ({
           className="!text-white border-none text-md font-semibold outline-none cursor-pointer flex items-center !gap-3"
         >
           {translations.navbar.services}
-          <motion.span
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
+          <span className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
             <FaArrowDown />
-          </motion.span>
+          </span>
         </button>
 
-        <AnimatePresence>
-          {open && (
-            <motion.ul
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="overflow-hidden space-y-4 mt-4 text-center"
-            >
-              <li className="text-sm text-white/80 hover:text-primary">
-                Service 1
-              </li>
-              <li className="text-sm text-white/80 hover:text-primary">
-                Service 2
-              </li>
-              <li className="text-sm text-white/80 hover:text-primary">
-                Service 3
-              </li>
-            </motion.ul>
-          )}
-        </AnimatePresence>
+        {open && (
+          <ul 
+            className="overflow-hidden space-y-4 mt-4 text-center"
+            data-aos="fade-up"
+          >
+            <li className="text-sm text-white/80 hover:text-primary">
+              Service 1
+            </li>
+            <li className="text-sm text-white/80 hover:text-primary">
+              Service 2
+            </li>
+            <li className="text-sm text-white/80 hover:text-primary">
+              Service 3
+            </li>
+          </ul>
+        )}
       </div>
     );
   }
@@ -224,12 +209,9 @@ const Services = ({
         <PopoverTrigger asChild>
           <button className="!text-white border-none text-xl font-semibold outline-none cursor-pointer flex items-center !gap-3">
             {translations.navbar.services}
-            <motion.span
-              animate={{ rotate: open ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
+            <span className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
               <FaArrowDown />
-            </motion.span>
+            </span>
           </button>
         </PopoverTrigger>
         <PopoverContent align="start" className="w-32" sideOffset={5}>

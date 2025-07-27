@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-bode , html {
-  scroll-behavior: smooth;
-  overflow: hidden;
 
-}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -89,9 +85,7 @@ bode , html {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply text-foreground;
-  }
+
     .container {
     @apply mx-auto px-4 md:px-8 lg:px-12 xl:px-16;
   }
@@ -104,31 +98,5 @@ bode , html {
 }
 
 
-html[lang="ar"] div[role="dialog"] button {
-  left: 24px !important;
-  right: auto !important;
-}
-
-html[lang="en"] div[role="dialog"] button {
-  left: auto !important;
-  right: 24px !important;
-}
-
-html[lang="ar"] div[role="combobox"] button  {
-  left: 24px !important;
-  right: auto !important;
-  border: none !important;
-
-  
-}
-.lucide-chevron-down {
-  color: white !important;
-  opacity: 1 !important;
-}
 
 
-html[lang="en"] div[role="combobox"] button {
-  left: auto !important;
-  right: 24px !important;
-  border: none !important;
-}

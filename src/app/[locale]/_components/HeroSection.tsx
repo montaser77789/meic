@@ -7,13 +7,10 @@ const HeroSection = () => {
       style={{
         backgroundImage: `url(${bgImage.src})`,
       }}
-      className="relative bg-cover 
-    bg-center 
-    h-screen
-    bg-no-repeat py-24 md:py-32
+      className="relative bg-cover  bg-center   h-screen  bg-no-repeat 
     "
     >
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>
+      <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>
     </section>
   );
 };

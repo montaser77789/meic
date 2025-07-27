@@ -11,11 +11,11 @@ const Header = async () => {
   const locale = await getCurrentLocale();
   const translations = await getTrans(locale);
   return (
-    <header className="!bg-none py-2 fixed top-0 z-50 w-full" >
-      <div className="container ">
+    <header className="  fixed top-0 z-50 w-full" >
+      <div className="container py-4">
         <div className="flex items-center justify-between border-b-2 pb-3 border-primary">
           <div>
-            <Image src={logo} alt="logo" width={100} height={100} />
+            <Image src={logo} alt="logo" width={100} height={100} priority />
           </div>
           <div>
             <Navbar translations={translations} locale={locale} />
