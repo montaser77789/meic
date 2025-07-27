@@ -93,7 +93,7 @@ const Navbar = ({
                 >
                   <Link
                     onClick={() => setOpenMenu(false)}
-                    className={`text-xl lg:text-2xl font-semibold hover:text-primary duration-200 transition-colors ${
+                    className={`text-xl lg:text-md font-semibold hover:text-primary duration-200 transition-colors ${
                       pathname === link.href ? "text-blue-500" : "text-white"
                     }`}
                     href={link.href}
@@ -177,7 +177,7 @@ const Services = ({
       <div className="flex flex-col items-center">
         <button
           onClick={() => setOpen(!open)}
-          className="!text-white border-none text-2xl font-semibold outline-none cursor-pointer flex items-center !gap-3"
+          className="!text-white border-none text-md font-semibold outline-none cursor-pointer flex items-center !gap-3"
         >
           {translations.navbar.services}
           <motion.span
@@ -197,13 +197,13 @@ const Services = ({
               transition={{ duration: 0.2 }}
               className="overflow-hidden space-y-4 mt-4 text-center"
             >
-              <li className="text-xl text-white/80 hover:text-primary">
+              <li className="text-sm text-white/80 hover:text-primary">
                 Service 1
               </li>
-              <li className="text-xl text-white/80 hover:text-primary">
+              <li className="text-sm text-white/80 hover:text-primary">
                 Service 2
               </li>
-              <li className="text-xl text-white/80 hover:text-primary">
+              <li className="text-sm text-white/80 hover:text-primary">
                 Service 3
               </li>
             </motion.ul>
@@ -222,7 +222,7 @@ const Services = ({
         dir={isArabic ? "rtl" : "ltr"}
       >
         <PopoverTrigger asChild>
-          <button className="!text-white border-none text-md font-semibold outline-none cursor-pointer flex items-center !gap-3">
+          <button className="!text-white border-none text-xl font-semibold outline-none cursor-pointer flex items-center !gap-3">
             {translations.navbar.services}
             <motion.span
               animate={{ rotate: open ? 180 : 0 }}
