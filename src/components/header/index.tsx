@@ -11,7 +11,7 @@ const Header = async () => {
   const locale = await getCurrentLocale();
   const translations = await getTrans(locale);
   return (
-    <header className="  fixed top-0 z-50 w-full" >
+    <header className="  absolute top-0 z-50 w-full" >
       <div className="container py-4">
         <div className="flex items-center justify-between border-b-2 pb-3 border-primary">
           <div>
