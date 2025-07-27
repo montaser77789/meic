@@ -12,8 +12,8 @@ const Header = async () => {
   const translations = await getTrans(locale);
   return (
     <header className="!bg-none py-2 fixed top-0 z-50 w-full" >
-      <div className="container">
-        <div className="flex items-center justify-between">
+      <div className="container ">
+        <div className="flex items-center justify-between border-b-2 pb-3 border-primary">
           <div>
             <Image src={logo} alt="logo" width={100} height={100} />
           </div>

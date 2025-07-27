@@ -46,7 +46,7 @@ const Navbar = ({
   ];
 
   return (
-    <nav>
+    <nav >
       {/* Hamburger menu button */}
       <Button
         variant="secondary"
@@ -93,7 +93,7 @@ const Navbar = ({
                 >
                   <Link
                     onClick={() => setOpenMenu(false)}
-                    className={`text-xl lg:text-md font-semibold hover:text-primary duration-200 transition-colors ${
+                    className={`text-xl lg:text-md font-semibold   hover:text-primary duration-200 transition-colors ${
                       pathname === link.href ? "text-blue-500" : "text-white"
                     }`}
                     href={link.href}
