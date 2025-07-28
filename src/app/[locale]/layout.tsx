@@ -4,6 +4,7 @@ import "./globals.css";
 import { Directions, Languages } from "@/components/constants/enum";
 import { Locale } from "@/i18n.config";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default async function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
