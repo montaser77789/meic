@@ -3,10 +3,10 @@ import React from "react";
 
 const ContactSection = () => {
   return (
-    <section className="bg-[#F5F5F5] pt-20">
+    <section className="bg-[#F5F5F5] py-20">
       <div className="container">
 
-        <div className="text-center max-w-5xl mx-auto">
+        <div className="text-center  mx-auto">
           <h2 className="text-2xl md:text-5xl font-bold text-primary">
             جاهزين نسمعك ونساعدك.. تواصل معانا بخطوة واحدة
           </h2>
