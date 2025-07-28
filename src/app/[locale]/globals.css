@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -79,14 +78,12 @@
   --sidebar-ring: oklch(0.707 0.022 261.325);
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
 
-    .container {
+  .container {
     @apply mx-auto px-4 md:px-8 lg:px-12 xl:px-16;
   }
   .section-gap {
@@ -96,7 +93,8 @@
     @apply flex items-center justify-center;
   }
 }
-
-
-
-
+.swiper-pagination-bullet{
+  background-color: var(--primary) !important;
+  width: 10px !important;
+  height: 10px !important;
+}
