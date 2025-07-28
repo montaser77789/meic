@@ -95,7 +95,7 @@ export default function Sections() {
         {sections.map((section, index) => (
           <SwiperSlide
             key={index}
-            className="!w-[300px] md:!w-[400px] !h-[650px] bg-white rounded-lg overflow-hidden shadow-lg"
+            className="!w-[320px] md:!w-[400px] !h-[650px] bg-white rounded-lg overflow-hidden shadow-lg"
           >
             <div className="relative h-full w-full">
               <div className="absolute inset-0 bg-black/30 z-10"></div>
@@ -106,7 +106,7 @@ export default function Sections() {
                 className="object-cover"
               />
               <div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
-                <div className="text-white p-6 rounded-lg">
+                <div className="text-white p-0 md:p-2 rounded-lg">
                   <h3 className="text-xl md:text-3xl font-bold mb-2">
                     {section.title}
                   </h3>
