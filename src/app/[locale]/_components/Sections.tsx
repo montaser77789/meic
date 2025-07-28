@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Navigation } from "swiper/modules";
 import section1 from "../../../../public/Sections/a2616ed9d9e40ec0c576e7041f08c2d28e11d74d.jpg";
 import section2 from "../../../../public/Sections/8f5589d1d9d1efd155d7621d2ed04fe115b11271.jpg";
 import section3 from "../../../../public/Sections/fb34614acd1bebddb170d8a4290e23ef5757a2d4.jpg";
@@ -10,9 +11,8 @@ import section5 from "../../../../public/Sections/01d4cb0a830390eaa40762a88bc92e
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-import { EffectCoverflow, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Sectiontitle from "@/components/ui/Section-title";
@@ -66,16 +66,17 @@ const sections = [
 
 export default function Sections() {
   return (
-    <div className="container  section-gap " >
+    <div className="container section-gap relative">
       <Sectiontitle
         title="أقسامنا التشغيلية والهندسية"
-        description="تنقسم شركتنا إلى أقسام تشغيلية وهندسية متخصصة، تُغطي كافة مراحل المشروع  من أعمال الحفر وتأمين المعدات مرورًا بالبناء والتكييف، وصولًا إلى التشغيل والصيانة كل قسم يقوده فريق محترف بخبرة ميدانية واسعة ومعايير جودة معتمدة"
+        description="تنقسم شركتنا إلى أقسام تشغيلية وهندسية متخصصة، تُغطي كافة مراحل المشروع من أعمال الحفر وتأمين المعدات مرورًا بالبناء والتكييف، وصولًا إلى التشطيب والصيانة. كل قسم يقوده فريق محترف بخبرة ميدانية واسعة ومعايير جودة معتمدة"
       />
+
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        initialSlide={2} 
+        initialSlide={2}
         slidesPerView={"auto"}
         coverflowEffect={{
           rotate: 0,
@@ -84,18 +85,20 @@ export default function Sections() {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}
-        modules={[EffectCoverflow, Pagination]}
-        className="h-[550px] mt-5"
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        modules={[EffectCoverflow, Navigation]}
+        className="h-[650px] mt-5"
       >
         {sections.map((section, index) => (
           <SwiperSlide
             key={index}
-            className="!w-[400px] !h-[500px] bg-white rounded-lg overflow-hidden shadow-lg"
+            className="!w-[300px] md:!w-[400px] !h-[650px] bg-white rounded-lg overflow-hidden shadow-lg"
           >
             <div className="relative h-full w-full">
-              <div className="absolute inset-0 bg-black/30 z-10"></div>{" "}
-          
+              <div className="absolute inset-0 bg-black/30 z-10"></div>
               <Image
                 src={section.img}
                 alt={section.title}
@@ -104,12 +107,16 @@ export default function Sections() {
               />
               <div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
                 <div className="text-white p-6 rounded-lg">
-                  <h3 className="text-xl md:text-3xl font-bold mb-2">{section.title}</h3>
-                  <p className="mb-4 text-sm md:text-xl">{section.description}</p>
+                  <h3 className="text-xl md:text-3xl font-bold mb-2">
+                    {section.title}
+                  </h3>
+                  <p className="mb-4 text-sm md:text-xl">
+                    {section.description}
+                  </p>
 
                   <ul className="mb-4 space-y-2">
                     {section.features.map((feature, i) => (
-                      <li key={i} className="flex items-center  gap-3 ">
+                      <li key={i} className="flex items-center gap-3">
                         <span className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
                           ✓
                         </span>
@@ -124,6 +131,9 @@ export default function Sections() {
             </div>
           </SwiperSlide>
         ))}
+
+        <div className="swiper-button-prev !top-auto  after:!text-white after:!text-2xl"></div>
+        <div className="swiper-button-next !top-auto  after:!text-white after:!text-2xl"></div>
       </Swiper>
     </div>
   );
