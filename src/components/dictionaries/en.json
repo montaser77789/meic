@@ -1,8 +1,161 @@
 {
-    "navbar": {
-        "home": "Home",
-        "about": "About",
-        "ourwork": "Our Work",
-        "services": "Services"
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "ourwork": "Our Work",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "We execute your projects with the highest quality standards ... from excavation to operation",
+    "description": "We offer integrated solutions for water infrastructure and industrial pumps, with local expertise and global quality, supporting vital projects in the Kingdom and the Gulf region.",
+    "button1": "Start your project with us",
+    "button2": "Explore our services"
+  },
+  "ourpatners": {
+    "title": "Partners We Are Proud to Have Earned Their Trust",
+    "description": "We take pride in providing our services to several leading governmental and private entities. Their trust stands as a testament to the quality of our sustainable and effective solutions."
+  },
+  "sections": {
+    "title": "Our Operational and Engineering Divisions",
+    "description": "Our company is divided into specialized operational and engineering divisions that cover all project phases — from excavation and equipment procurement to construction and HVAC, all the way to operation and maintenance. Each division is led by a professional team with extensive field experience and certified quality standards."
+  },
+  "ourwork": {
+    "title": "Our Work on the Ground",
+    "description": "We have executed numerous projects across our various fields—from well drilling to facility operation—in collaboration with both governmental and private entities, following strict implementation standards that ensure sustainability and quality."
+  },
+  "whyus": {
+    "title": "Why Do Our Partners Choose Us?",
+    "description": "We stand out with extensive experience, professional execution teams, and integrated solutions that ensure our clients' peace of mind from the first step to final delivery.",
+    "points": [
+      {
+        "title": "Extensive Field Experience",
+        "description": "Over 20 years of specialized work in infrastructure, contracting, and operations projects"
+      },
+      {
+        "title": "Precise Time Commitment",
+        "description": "We plan, execute, and deliver on time — with no surprises"
+      },
+      {
+        "title": "Comprehensive Services Under One Roof",
+        "description": "From excavation to operation, we cover the entire project cycle"
+      },
+      {
+        "title": "Guaranteed Quality and Execution",
+        "description": "All our work comes with documented technical and operational guarantees"
+      },
+      {
+        "title": "Wide Geographical Coverage",
+        "description": "We serve all regions of the Kingdom and the Gulf with ready and equipped teams"
+      },
+      {
+        "title": "Direct Communication and Ongoing Support",
+        "description": "A dedicated project manager follows up with you step by step to ensure your satisfaction"
+      }
+    ]
+  },
+  "numbers": {
+    "title": "Numbers That Tell Our Story",
+    "items": [
+      {
+        "icon": "MdOutlineHandyman",
+        "number": "+500",
+        "title": "Projects Completed",
+        "description": "Extensive experience delivering successful projects that reflect high quality and efficiency"
+      },
+      {
+        "icon": "MdOutlineCalendarToday",
+        "number": "+20",
+        "title": "Years of Excellence",
+        "description": "Providing integrated services with top-notch quality and commitment to maintenance and premium management for guaranteed customer satisfaction."
+      },
+      {
+        "icon": "MdGroups",
+        "number": "+500",
+        "title": "Clients & Partners",
+        "description": "Mutual trust and successful partnerships that fuel our continuous growth and expansion."
+      }
+    ]
+  },
+    "contact": {
+    "title": "Ready to listen and support you... Contact us in one step",
+    "description": "From the first meter of digging to your project running at full capacity – we offer services in well drilling, contracting, HVAC, equipment rental, tool sales, business management, and operations. We work with you step by step, and your communication is the beginning.",
+    "button1": "Contact Now",
+    "button2": "Request a Call"
+  },
+   "questions": {
+    "title": "Frequently Asked Questions",
+    "description": "We’ve gathered the most common questions our clients ask and answered them clearly.",
+    "items": [
+      {
+        "question": "How can I request a quote or consultation?",
+        "answer": "You can contact us via WhatsApp or email."
+      },
+      {
+        "question": "Do you provide your services across the entire Kingdom?",
+        "answer": "Yes, we offer our services across the entire Kingdom."
+      },
+      {
+        "question": "How long does project execution take?",
+        "answer": "From 3 to 6 months."
+      },
+      {
+        "question": "Can you deliver multiple services at once?",
+        "answer": "Yes, we can deliver multiple services simultaneously."
+      },
+      {
+        "question": "Do your services include warranty or post-service maintenance?",
+        "answer": "Yes, our services come with warranty and post-service maintenance."
+      },
+      {
+        "question": "What types of clients do you work with?",
+        "answer": "We work with a wide range of clients, and we’re happy to answer any questions clearly."
+      }
+    ]
+  },
+   "footer": {
+    "about": "A company specialized in drilling services, general contracting, HVAC, equipment rental, tool sales, project management, and operations. We work with expertise, precision, and genuine attention to every detail.",
+    "company": {
+      "title": "Company",
+      "links": ["Home", "Departments", "Our Work", "FAQs"]
+    },
+    "services": {
+      "title": "Services",
+      "items": ["Well Drilling & Pumps", "Contracting", "HVAC Systems", "Heavy Equipment Rental", "Maintenance Management"]
+    },
+    "certificates": {
+      "title": "Certificates",
+      "items": [
+        "ISO 9001:2015 - Quality Management",
+        "ISO 14001:2015 - Environmental Management",
+        "ISO 45001:2018 - Occupational Safety",
+        "SASO - Saudi Standards",
+        "CE - European Conformity"
+      ]
+    },
+    "follow": {
+      "title": "Follow Us",
+      "links": [
+        { "label": "LinkedIn Network", "icon": "linkedin" },
+        { "label": "Tech Channel", "icon": "youtube" },
+        { "label": "Our Gallery", "icon": "instagram" },
+        { "label": "Latest News", "icon": "news" }
+      ]
     }
+  },
+    "overSection": {
+    "offer1": {
+      "title": "Special Discount Up To",
+      "discount": "40%",
+      "description1": "For new operation and maintenance contracts",
+      "description2": "Valid until the end of August",
+      "button": "Learn More"
+    },
+    "offer2": {
+      "title": "All the Tools You Need... In One Place",
+      "description": "Explore our wide range of original hand and power tools",
+      "points": ["Trusted Brands", "Competitive Prices", "Fast Delivery"],
+      "button": "Learn More"
+    }
+  }
 }

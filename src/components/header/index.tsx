@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../../public/logo.png";
+import logo from "../../../public/favicon.png";
 import Navbar from "./Navbar";
 import LanguageSwitcher from "./language-switcher";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
@@ -21,7 +21,7 @@ const Header = async () => {
             <Navbar translations={translations} locale={locale} />
           </div>
           <div className="lg:flex items-center gap-4 hidden ">
-            <Button className="btn rounded-full">اتصل بنا</Button>
+            <Button className="btn rounded-full">{translations.navbar.contact}</Button>
             <LanguageSwitcher />
           </div>
         </div>

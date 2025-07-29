@@ -1,50 +1,36 @@
+import { Translations } from "@/components/types/Translationx";
 import Sectiontitle from "@/components/ui/Section-title";
+import { JSX } from "react";
 import {
   MdOutlineHandyman,
   MdOutlineCalendarToday,
   MdGroups,
 } from "react-icons/md";
 
-const numberData = [
-  {
-    id: 1,
-    number: "+500",
-    icon: MdOutlineHandyman,
-    title: "مشروع منفّذ",
-    description: "خبرة عملية في تنفيذ مشاريع ناجحة تعكس جودة وكفاءة عالية",
-  },
-  {
-    id: 2,
-    icon: MdOutlineCalendarToday,
-    number: "+20",
-    title: "عامًا من التميز",
-    description:
-      "تقديم خدمات متكاملة بأعلى جودة وكفاءة، مع التزام دائم بالصيانة والإدارة المميزة لضمان رضا العملاء.",
-  },
-  {
-    id: 3,
-    icon: MdGroups,
-    number: "+500",
-    title: "عميل وشريك",
-    description: "ثقة متبادلة وشراكات ناجحة تدعم نمونا وتوسعنا المستمر.",
-  },
-];
+const iconsMap: { [key: string]: JSX.Element } = {
+  MdOutlineHandyman: <MdOutlineHandyman className="text-5xl text-white" />,
+  MdOutlineCalendarToday: <MdOutlineCalendarToday className="text-5xl text-white" />,
+  MdGroups: <MdGroups className="text-5xl text-white" />,
+};
 
-const Numbers = () => {
+const Numbers = ({ translation }: { translation: Translations }) => {
   return (
-    <section className="py-5 ">
+    <section className="py-5">
       <div className="container">
-        <Sectiontitle title="أرقام تروي قصتنا" description="" />
+        <Sectiontitle
+          title={translation.numbers.title}
+          description=""
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-        {numberData.map((item) => (
+        {translation.numbers.items.map((item, index) => (
           <div
-            key={item.id}
-            className="flex flex-col justify-center items-center text-center  rounded-2xl p-4 space-y-3"
+            key={index}
+            className="flex flex-col justify-center items-center text-center rounded-2xl p-4 space-y-3"
           >
-            <div className="text-white bg-primary   w-[80px] h-[80px] flex items-center justify-center rounded-[10px]">
-              <item.icon className="text-5xl  " />
+            <div className="text-white bg-primary w-[80px] h-[80px] flex items-center justify-center rounded-[10px]">
+              {iconsMap[item.icon]}
             </div>
             <h2 className="text-2xl md:text-4xl font-bold text-primary mt-3">
               {item.number}

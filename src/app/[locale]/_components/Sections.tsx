@@ -16,6 +16,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Sectiontitle from "@/components/ui/Section-title";
+import { Translations } from "@/components/types/Translationx";
 
 const sections = [
   {
@@ -64,12 +65,16 @@ const sections = [
   },
 ];
 
-export default function Sections() {
+export default function Sections({
+  translation,
+}: {
+  translation: Translations;
+}) {
   return (
     <div className="container section-gap relative">
       <Sectiontitle
-        title="أقسامنا التشغيلية والهندسية"
-        description="تنقسم شركتنا إلى أقسام تشغيلية وهندسية متخصصة، تُغطي كافة مراحل المشروع من أعمال الحفر وتأمين المعدات مرورًا بالبناء والتكييف، وصولًا إلى التشطيب والصيانة. كل قسم يقوده فريق محترف بخبرة ميدانية واسعة ومعايير جودة معتمدة"
+        title={translation.sections.title}
+        description={translation.sections.description}
       />
 
       <Swiper

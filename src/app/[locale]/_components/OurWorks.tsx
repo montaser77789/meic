@@ -7,8 +7,9 @@ import img from "../../../../public/our works/aa49197bec50e15807196efe5bf231e809
 import img2 from "../../../../public/our works/ab912a3989458410e305728b4af44322933f6c7e.jpg";
 import img3 from "../../../../public/our works/b9822fd65676bea123dd4f7242c93a7b4ee54ddb.jpg";
 import img4 from "../../../../public/our works/db67864e27200294965ac81501f0edcc7cd13194.jpg";
+import { Translations } from "@/components/types/Translationx";
 
-const OurWorks = () => {
+const OurWorks = ({ translation }: { translation: Translations }) => {
   const [activeTab, setActiveTab] = useState(1);
   const tabs = [
     {
@@ -44,8 +45,8 @@ const OurWorks = () => {
     <section className="section-gap">
       <div className="container">
         <Sectiontitle
-          title="أعمالنا على أرض الواقع"
-          description="نفّذنا مشاريع متعددة في مختلف مجالاتنا  من حفر الآبار إلى تشغيل المنشآت بالتعاون مع جهات حكومية وخاصة، وبمعايير تنفيذ صارمة تضمن الاستدامة والجودة."
+          title={translation.ourwork.title}
+          description={translation.ourwork.description}
         />
         <div>
           <div className="flex items-center justify-between gap-4 w-full mt-3 flex-nowrap overflow-auto max-w-4xl m-auto">

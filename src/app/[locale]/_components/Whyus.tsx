@@ -11,42 +11,42 @@ import { MdOutlineHandyman } from "react-icons/md";
 import { MdOutlineVerified } from "react-icons/md";
 import { MdTravelExplore } from "react-icons/md";
 import { MdPhoneInTalk } from "react-icons/md";
+import { Translations } from "@/components/types/Translationx";
 
-const WhyusData = [
-  {
-    icon: LuBrain,
-    title: "خبرة ميدانية عميقة",
-    description:
-      "أكثر من 20 عامًا من العمل المتخصص في مشاريع البنية التحتية والمقاولات والتشغيل",
-  },
-  {
-    icon: MdOutlineBrowseGallery,
-    title: "التزام دقيق بالمواعيد",
-    description: "نُخطط، نُنفذ، ونسلّم في الموعد  بدون مفاجآت",
-  },
-  {
-    icon: MdOutlineHandyman,
-    title: "خدمات متكاملة تحت سقف واحد",
-    description: "من الحفر وحتى التشغيل، نغطي دورة المشروع بالكامل",
-  },
-  {
-    icon: MdOutlineVerified,
-    title: "ضمان على الجودة والتنفيذ",
-    description: "جميع أعمالنا تشمل ضمانات فنية وتشغيلية موثقة",
-  },
-  {
-    icon: MdTravelExplore,
-    title: "تغطية جغرافية واسعة",
-    description: "نخدم جميع مناطق المملكة والخليج العربي بفِرق جاهزة ومجهزة",
-  },
-  {
-    icon: MdPhoneInTalk,
-    title: "تواصل مباشر ودعم مستمر",
-    description: "مدير مشروع يتابع معك خطوة بخطوة لضمان رضاك",
-  },
-];
+const Whyus = ({ translation }: { translation: Translations }) => {
+  const WhyusData = [
+    {
+      icon: LuBrain,
+      title: translation.whyus.points[0].title,
+      description: translation.whyus.points[0].description,
+    },
+    {
+      icon: MdOutlineBrowseGallery,
+      title: translation.whyus.points[1].title,
+      description: translation.whyus.points[1].description,
+    },
+    {
+      icon: MdOutlineHandyman,
+      title: translation.whyus.points[2].title,
+      description: translation.whyus.points[2].description,
+    },
+    {
+      icon: MdOutlineVerified,
+      title: translation.whyus.points[3].title,
+      description: translation.whyus.points[3].description,
+    },
+    {
+      icon: MdTravelExplore,
+      title: translation.whyus.points[4].title,
+      description: translation.whyus.points[4].description,
+    },
+    {
+      icon: MdPhoneInTalk,
+      title: translation.whyus.points[5].title,
+      description: translation.whyus.points[5].description,
+    },
+  ];
 
-const Whyus = () => {
   return (
     <section className="section-gap bg-[#f5f5f5] py-5">
       <div className="container">
@@ -54,8 +54,8 @@ const Whyus = () => {
           <div>
             <div className="!text-right">
               <Sectiontitle
-                title="لماذا يختارنا شركاؤنا ؟"
-                description="نتميّز بخبرة طويلة، وفِرَق تنفيذ احترافية، وحلول متكاملة تضمن لعملائنا راحة البال من أول خطوة حتى التسليم النهائي."
+                title={translation.whyus.title}
+                description={translation.whyus.description}
               />
             </div>
             <div className="grid grid-cols-3 gap-3  grid-rows-2 h-[407px] mt-3">
