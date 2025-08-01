@@ -11,18 +11,18 @@ import Whyus from "./_components/Whyus";
 import getTrans from "@/lib/translation";
 import { getSection } from "@/server/db/getSection";
 
-export default async  function Home() {
+export default async function Home() {
   const locale = await getCurrentLocale();
   const translations = await getTrans(locale);
-    const section = await getSection({ role: "user", locale: locale});
+  const section = await getSection({ role: "user", locale: locale });
   
   return (
     <main>
       <HeroSection translation={translations} />
       <OurPartners translation={translations} />
-      <Sections sections={section}  locale={locale} translation={translations} />
+      <Sections sections={section} locale={locale} translation={translations} />
       <OverSection translation={translations} />
-      <OurWorks translation={translations} />
+      <OurWorks section={section} translation={translations} />
       <Whyus translation={translations} />
       <Numbers translation={translations} />
       <Question translation={translations} />

@@ -14,8 +14,8 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <body className={`${alexandria.variable} antialiased`}>
-      <div dir="rtl" className="flex h-screen overflow-hidden">
+    <body className={`  ${alexandria.variable} antialiased`}>
+      <div dir="rtl" className="flex h-screen overflow-hidden ">
         {/* Sidebar */}
         <aside className="w-64 hidden lg:block bg-white text-primary shadow-lg">
           <AdminSidepar locale={"ar" as Locale} />

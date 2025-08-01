@@ -20,12 +20,17 @@ import {
 } from "@/components/ui/popover";
 import { FaArrowDown } from "react-icons/fa";
 import { useClientSession } from "@/hooks/useClientSession";
-
+interface Section {
+  id: number;
+  title: string;
+}
 const Navbar = ({
+  sections,
   translations,
   locale,
   initialSession,
 }: {
+  sections: Section[];
   translations: Translations;
   locale: Locale;
   initialSession: Session | null;
@@ -57,7 +62,7 @@ const Navbar = ({
     {
       id: 3,
       title: translations.navbar.ourwork,
-      href: `/${locale}/${Routes.OURWORK}`,
+      href: `/#sections`,
     },
   ];
 
@@ -107,7 +112,12 @@ const Navbar = ({
 
             {/* Services dropdown */}
             <li data-aos="fade-up" data-aos-delay={50 * links.length}>
-              <Services locale={locale} translations={translations} mobile />
+              <Services
+                sections={sections}
+                locale={locale}
+                translations={translations}
+                mobile
+              />
             </li>
 
             {/* Language switcher */}
@@ -128,7 +138,11 @@ const Navbar = ({
           <li key={link.id}>
             <Link
               className={`font-semibold text-xl hover:text-primary duration-200 transition-colors ${
-                pathname === link.href ? "text-primary" : "text-white"
+                pathname === link.href
+                  ? "text-primary"
+                  : pathname.includes("admin")
+                  ? "text-black"
+                  : "text-white"
               }`}
               href={link.href}
             >
@@ -152,7 +166,11 @@ const Navbar = ({
           </li>
         )}
         <li>
-          <Services locale={locale} translations={translations} />
+          <Services
+            sections={sections}
+            locale={locale}
+            translations={translations}
+          />
         </li>
       </ul>
     </nav>
@@ -160,10 +178,12 @@ const Navbar = ({
 };
 
 const Services = ({
+  sections,
   locale,
   translations,
   mobile = false,
 }: {
+  sections: Section[];
   locale: Locale;
   translations: Translations;
   mobile?: boolean;
@@ -183,12 +203,16 @@ const Services = ({
     }, 200);
   };
 
+  const pathname = usePathname();
+
   if (mobile) {
     return (
       <div className="flex flex-col items-center">
         <button
           onClick={() => setOpen(!open)}
-          className="!text-white border-none text-md font-semibold outline-none cursor-pointer flex items-center !gap-3"
+          className={`!text-black border-none text-md font-semibold outline-none cursor-pointer flex items-center !gap-3 ${
+            pathname.includes("admin") ? "!text-black" : "!text-white"
+          }`}
         >
           {translations.navbar.services}
           <span
@@ -205,15 +229,16 @@ const Services = ({
             className="overflow-hidden space-y-4 mt-4 text-center"
             data-aos="fade-up"
           >
-            <li className="text-sm text-white/80 hover:text-primary">
-              Service 1
-            </li>
-            <li className="text-sm text-white/80 hover:text-primary">
-              Service 2
-            </li>
-            <li className="text-sm text-white/80 hover:text-primary">
-              Service 3
-            </li>
+            {sections.map((section) => (
+              <li key={section.id}>
+                <Link
+                  className={`font-semibold hover:text-primary duration-200 transition-colors cursor-pointer !text-white}`}
+                  href={`/${locale}/${section.id}`}
+                >
+                  {section.title.split("…")[0]}
+                </Link>
+              </li>
+            ))}
           </ul>
         )}
       </div>
@@ -229,7 +254,12 @@ const Services = ({
         dir={isArabic ? "rtl" : "ltr"}
       >
         <PopoverTrigger asChild>
-          <button className="!text-white border-none text-xl font-semibold outline-none cursor-pointer flex items-center !gap-3">
+          <button
+            onClick={() => setOpen(!open)}
+            className={` border-none text-md font-semibold outline-none cursor-pointer flex items-center !gap-3 ${
+              pathname.includes("admin") ? "!text-black" : "!text-white"
+            }`}
+          >
             {translations.navbar.services}
             <span
               className={`transition-transform duration-200 ${
@@ -240,11 +270,18 @@ const Services = ({
             </span>
           </button>
         </PopoverTrigger>
-        <PopoverContent align="start" className="w-32" sideOffset={5}>
+        <PopoverContent align="start" className="w-auto" sideOffset={5}>
           <ul className="space-y-2">
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
+            {sections.map((section) => (
+              <li key={section.id}>
+                <Link
+                  className={`font-semibold text-nowrap  duration-200 transition-colors cursor-pointer  text-primary hover:text-secondary`}
+                  href={`/${locale}/${section.id}`}
+                >
+                  {section.title.split("…")[0]}
+                </Link>
+              </li>
+            ))}
           </ul>
         </PopoverContent>
       </div>

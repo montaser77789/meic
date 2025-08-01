@@ -25,6 +25,7 @@ interface sections {
   features: string[];
   slug: string;
 }
+
 export default function Sections({
   translation,
   locale,
@@ -35,7 +36,7 @@ export default function Sections({
   sections: sections[]
 }) {
   return (
-    <div className="container section-gap relative">
+    <section id="sections" className="container section-gap relative">
       <Sectiontitle
         title={translation.sections.title}
         description={translation.sections.description}
@@ -112,6 +113,6 @@ export default function Sections({
         <div className="swiper-button-prev !top-auto  after:!text-white after:!text-2xl"></div>
         <div className="swiper-button-next !top-auto  after:!text-white after:!text-2xl"></div>
       </Swiper>
-    </div>
+    </section>
   );
 }

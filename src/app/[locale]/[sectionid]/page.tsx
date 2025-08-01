@@ -52,6 +52,7 @@ export default async function page({
     sectionId: section.id,
   });
   console.log(question);
+
   return (
     <div>
       <HeroSections sections={section} translation={translations} />

@@ -8,6 +8,7 @@ import getTrans from "@/lib/translation";
 import { Alexandria } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import NextAuthSessionProvider from "@/providers/NextAuthSessionProvider";
+import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 
 const alexandria = Alexandria({
   subsets: ["arabic", "latin"],
@@ -66,6 +67,7 @@ export default async function RootLayout({
     <html lang={locale} dir={isArabic ? Directions.RTL : Directions.LTR}>
       <body className={`${alexandria.variable} antialiased`}>
         <NextAuthSessionProvider>
+          <WhatsAppIcon  locale={locale}/>
           <Toaster position="top-center" richColors />
           <Header />
           {children}

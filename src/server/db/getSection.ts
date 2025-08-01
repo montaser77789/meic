@@ -3,7 +3,11 @@ import { db } from "./prisma";
 
 export const getSection = cache(
   async ({ role, locale }: { role: "admin" | "user"; locale: "en" | "ar" }) => {
-    const sections = await db.section.findMany({});
+    const sections = await db.section.findMany({
+      include: {
+        galleryImages: true,
+      },
+    });
     if (role === "admin") {
       return sections;
     } else {
@@ -15,6 +19,7 @@ export const getSection = cache(
         image: section.image,
         features: locale === "en" ? section.features_en : section.features_ar,
         slug: section.slug,
+        galleryImages: section.galleryImages,
       }));
     }
   },
@@ -36,6 +41,7 @@ export const getSectionBySlug = cache(
       where: { id: id },
       include: {
         Services: true,
+        galleryImages: true,
       },
     });
     if (role === "admin") {

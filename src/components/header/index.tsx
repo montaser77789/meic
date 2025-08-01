@@ -8,11 +8,13 @@ import getTrans from "@/lib/translation";
 import { Button } from "../ui/button";
 import { getServerSession } from "next-auth";
 import authOptions from "@/server/db/auth";
+import { getSection } from "@/server/db/getSection";
 
 const Header = async () => {
   const locale = await getCurrentLocale();
   const translations = await getTrans(locale);
-    const initialSession = await getServerSession(authOptions);
+  const initialSession = await getServerSession(authOptions);
+  const section = await getSection({ role: "user", locale: locale });
 
   return (
     <header className="  absolute top-0 z-50 w-full">
@@ -22,10 +24,17 @@ const Header = async () => {
             <Image src={logo} alt="logo" width={100} height={100} priority />
           </div>
           <div>
-            <Navbar initialSession={initialSession} translations={translations} locale={locale} />
+            <Navbar
+              sections={section}
+              initialSession={initialSession}
+              translations={translations}
+              locale={locale}
+            />
           </div>
           <div className="lg:flex items-center gap-4 hidden ">
-            <Button className="btn rounded-full">{translations.navbar.contact}</Button>
+            <Button className="btn rounded-full">
+              {translations.navbar.contact}
+            </Button>
             <LanguageSwitcher />
           </div>
         </div>
