@@ -4,7 +4,8 @@
     "about": "About",
     "ourwork": "Our Work",
     "services": "Services",
-    "contact": "Contact"
+    "contact": "Contact",
+    "admin": "Admin"
   },
   "hero": {
     "title": "We execute your projects with the highest quality standards ... from excavation to operation",
@@ -157,5 +158,9 @@
       "points": ["Trusted Brands", "Competitive Prices", "Fast Delivery"],
       "button": "Learn More"
     }
+  },
+  "projects":{
+    "title":"Some of Our Landscaping Projects",
+    "description" :"We don't just talk about quality, we prove it with our extensive experience delivering successful projects that reflect high quality and efficiency."
   }
 }

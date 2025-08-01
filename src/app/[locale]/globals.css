@@ -93,6 +93,18 @@
     @apply flex items-center justify-center;
   }
 }
+
+.swiper-pagination {
+  position: relative !important;
+  bottom: 10px !important;
+  padding-top: 30px !important;
+}
+.swiper-pagination-bullet {
+  background: var(--primary) !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+}
 .swiper-button-next,
 .swiper-button-prev {
   background: var(--primary);
@@ -101,7 +113,6 @@
   border-radius: 50% !important;
   transition: all 0.3s ease 0s !important;
   bottom: 0 !important;
-  
 }
 .swiper-button-next:hover,
 .swiper-button-prev:hover {

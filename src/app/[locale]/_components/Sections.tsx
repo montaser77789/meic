@@ -3,72 +3,36 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Navigation } from "swiper/modules";
-import section1 from "../../../../public/Sections/a2616ed9d9e40ec0c576e7041f08c2d28e11d74d.jpg";
-import section2 from "../../../../public/Sections/8f5589d1d9d1efd155d7621d2ed04fe115b11271.jpg";
-import section3 from "../../../../public/Sections/fb34614acd1bebddb170d8a4290e23ef5757a2d4.jpg";
-import section4 from "../../../../public/Sections/e4243b892e8d12fdfc8cfebf3758879661b11e7c.jpg";
-import section5 from "../../../../public/Sections/01d4cb0a830390eaa40762a88bc92e6e1d4d3ec4.jpg";
+
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import {  buttonVariants } from "@/components/ui/button";
 import Sectiontitle from "@/components/ui/Section-title";
 import { Translations } from "@/components/types/Translationx";
+import Link from "@/components/link/Link";
+import { Locale } from "@/i18n.config";
 
-const sections = [
-  {
-    img: section1,
-    title: "حفر الآبار والمضخات",
-    description:
-      "نخدم القطاعين العام والخاص في حفر وتجهيز الآبار وتركيب أنظمة الضخ، بأعلى المعايير الفنية والبيئية.",
-    features: ["خبرة في مختلف أنواع التربة", "تقنيات حديثة لضمان الكفاءة"],
-  },
-  {
-    img: section2,
-    title: "أنظمة التكييف والتبريد",
-    description:
-      "نقدم حلول متكاملة لتوريد وتركيب وصيانة أنظمة التكييف والتبريد، للمشاريع السكنية والتجارية والصناعية.",
-    features: [
-      "خبرة في الأنظمة المركزية والمنفصلة",
-      "كفاءة عالية وتوفير في استهلاك الطاقة",
-    ],
-  },
-  {
-    img: section3,
-    title: "تأجير المعدات الثقيلة",
-    description:
-      "نوفر معدات ثقيلة جاهزة للعمل في مختلف المشاريع، مع ضمان الجاهزية والصيانة المستمرة والدعم الفني السريع.",
-    features: [
-      "أسطول متنوع وحديث من المعدات",
-      "استجابة فورية واستبدال عند الحاجة",
-    ],
-  },
-  {
-    img: section4,
-    title: "المقاولات العامة",
-    description:
-      "ننفذ أعمال الحفر، الأساسات، البناء، والتشطيب للقطاعين العام والخاص، بجودة عالية والتزام صارم بالمعايير",
-    features: ["فرق متخصصة لكل مرحلة", "تقنيات حديثة وجودة تنفيذ ممتازة"],
-  },
-  {
-    img: section5,
-    title: "بيع العدد اليدوية والكهربائية",
-    description:
-      "نوفر عدد أصلية عالية الجودة تناسب احتياجات الورش والمشاريع، مع ضمان الأداء والتحمّل.",
-    features: [
-      "أدوات معتمدة من أفضل العلامات التجارية",
-      "استشارات لاختيار الأنسب لشغلك",
-    ],
-  },
-];
 
+interface sections {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  features: string[];
+  slug: string;
+}
 export default function Sections({
   translation,
+  locale,
+  sections
 }: {
   translation: Translations;
+  locale: Locale;
+  sections: sections[]
 }) {
   return (
     <div className="container section-gap relative">
@@ -105,7 +69,7 @@ export default function Sections({
             <div className="relative h-full w-full">
               <div className="absolute inset-0 bg-black/30 z-10"></div>
               <Image
-                src={section.img}
+                src={section.image}
                 alt={section.title}
                 fill
                 className="object-cover"
@@ -130,7 +94,15 @@ export default function Sections({
                     ))}
                   </ul>
 
-                  <Button className="w-full rounded-full">اعرف المزيد</Button>
+                  {/* <Button className="w-full rounded-full">اعرف المزيد</Button> */}
+                  <Link
+                    className={`w-full rounded-full ${buttonVariants({
+                      variant: "default",
+                    })}`}
+                    href={`/${locale}/${section.id}`}
+                  >
+                    اعرف المزيد
+                  </Link>
                 </div>
               </div>
             </div>

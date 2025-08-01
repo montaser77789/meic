@@ -10,17 +10,26 @@ export enum Languages {
 
 export enum Routes {
   HOME = "/",
-  SERVICES = "/services",
-  CONTACT = "/contact",
-  about = "/about",
-  OURWORK = "/ourwork",
+  SERVICES = "services",
+  CONTACT = "contact",
+  about = "about",
+  OURWORK = "ourwork",
+  AUTH = "auth",
+  ADMIN = "admin",
+    POINTS = "points"
+
 }
 
 export enum Pages {
-  HOME = "Home",
-  SERVICES = "Services",
-  CONTACT = "Contact",
-  about = "About",
+  HOME = "home",
+  SERVICES = "services",
+  CONTACT = "sontact",
+  about = "sbout",
+  LOGIN = "signin",
+  SECTIONS = "Sections",
+  questions = "questions",
+  GALLERIES = "galleries",
+  WHYUS = "whyus",
 }
 
 export enum InputTypes {

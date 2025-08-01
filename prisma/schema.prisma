@@ -1,0 +1,170 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String?
+  name          String?
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  providerAccountId String
+  access_token      String?
+  expires_at        Int?
+  id_token          String?
+  provider          String
+  refresh_token     String?
+  scope             String?
+  session_state     String?
+  token_type        String?
+  type              String
+  user              User    @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+}
+
+model VerificationRequest {
+  id         String   @id @default(cuid())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([identifier, token])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  expires      DateTime
+  sessionToken String   @unique
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Section {
+  id             String         @id @default(cuid())
+  title_ar       String         @unique
+  title_en       String         @unique
+  description_ar String
+  description_en String
+  features_ar    String[]
+  features_en    String[]
+  image          String
+  slug           String         @unique
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  Services       Services[]
+  galleryImages  GalleryImage[]
+  sectionId      String?
+  publicId       String?
+  Question       Question[]
+  WhyusSection   WhyusSection[]
+}
+
+model Services {
+  id        String    @id @default(cuid())
+  title_ar  String
+  title_en  String
+  desc_ar   String
+  desc_en   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Services  Service[]
+  Section   Section?  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId String?
+}
+
+model Service {
+  id         String    @id @default(cuid())
+  title_ar   String
+  title_en   String
+  desc_ar    String
+  desc_en    String
+  image      String?
+  publicId   String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  sectionId  String?
+  Services   Services? @relation(fields: [servicesId], references: [id], onDelete: Cascade)
+  servicesId String?
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  url       String
+  section   Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId String
+  publicId  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  question_ar String
+  question_en String
+  answer_ar   String
+  answer_en   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  Section     Section? @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId   String?
+}
+
+model WhyusSection {
+  id            String       @id @default(cuid())
+  heading_ar    String
+  heading_en    String
+  subheading_ar String
+  subheading_en String
+  points        WhyusPoint[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  Section       Section?     @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId     String?
+  WhyusImage    WhyusImage[]
+  
+}
+
+model WhyusPoint {
+  id        String       @id @default(cuid())
+  title_ar  String
+  title_en  String
+  desc_ar   String
+  desc_en   String
+  section   WhyusSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model WhyusImage {
+  id             String        @id @default(cuid())
+  url            String
+  publicId       String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  WhyusSection   WhyusSection? @relation(fields: [whyusSectionId], references: [id], onDelete: Cascade)
+  whyusSectionId String?
+}

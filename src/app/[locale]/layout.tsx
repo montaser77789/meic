@@ -6,6 +6,8 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import getTrans from "@/lib/translation";
 import { Alexandria } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
+import NextAuthSessionProvider from "@/providers/NextAuthSessionProvider";
 
 const alexandria = Alexandria({
   subsets: ["arabic", "latin"],
@@ -63,9 +65,12 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={isArabic ? Directions.RTL : Directions.LTR}>
       <body className={`${alexandria.variable} antialiased`}>
-        <Header />
-        {children}
-        <Footer translation={translations} />
+        <NextAuthSessionProvider>
+          <Toaster position="top-center" richColors />
+          <Header />
+          {children}
+          <Footer translation={translations} />
+        </NextAuthSessionProvider>
       </body>
     </html>
   );

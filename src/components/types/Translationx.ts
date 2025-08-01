@@ -5,6 +5,7 @@ export type Translations = {
     ourwork: string;
     services: string;
     contact: string;
+    admin: string;
   };
   hero: {
     title: string;
@@ -91,5 +92,9 @@ export type Translations = {
       points: string[];
       button: string;
     };
+  };
+  projects: {
+    title: string;
+    description: string;
   };
 };

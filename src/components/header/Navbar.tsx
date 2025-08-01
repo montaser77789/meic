@@ -9,6 +9,8 @@ import LanguageSwitcher from "./language-switcher";
 import { usePathname } from "next/navigation";
 import Link from "../link/Link";
 import AOS from "aos";
+import { Session } from "next-auth";
+
 import "aos/dist/aos.css";
 
 import {
@@ -17,21 +19,26 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { FaArrowDown } from "react-icons/fa";
+import { useClientSession } from "@/hooks/useClientSession";
 
 const Navbar = ({
   translations,
   locale,
+  initialSession,
 }: {
   translations: Translations;
   locale: Locale;
+  initialSession: Session | null;
 }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
+  const session = useClientSession(initialSession);
+  console.log(session);
 
   useEffect(() => {
     AOS.init({
       duration: 600,
-      easing: 'ease-out-quad',
+      easing: "ease-out-quad",
       once: true,
     });
   }, []);
@@ -68,7 +75,7 @@ const Navbar = ({
 
       {/* Mobile menu with AOS animations */}
       {openMenu && (
-        <div 
+        <div
           className="fixed inset-0 z-50 bg-primary/90 backdrop-blur-sm lg:hidden"
           data-aos="fade-left"
         >
@@ -85,11 +92,7 @@ const Navbar = ({
 
             {/* Menu links with staggered animation */}
             {links.map((link, index) => (
-              <li 
-                key={link.id}
-                data-aos="fade-up"
-                data-aos-delay={50 * index}
-              >
+              <li key={link.id} data-aos="fade-up" data-aos-delay={50 * index}>
                 <Link
                   onClick={() => setOpenMenu(false)}
                   className={`text-xl lg:text-md font-semibold hover:text-primary duration-200 transition-colors ${
@@ -108,8 +111,8 @@ const Navbar = ({
             </li>
 
             {/* Language switcher */}
-            <li 
-              data-aos="fade-up" 
+            <li
+              data-aos="fade-up"
               data-aos-delay={50 * (links.length + 1)}
               className="mt-8"
             >
@@ -133,6 +136,21 @@ const Navbar = ({
             </Link>
           </li>
         ))}
+        {session.data?.user && (
+          <li>
+            <Link
+              href={`/${locale}/${Routes.ADMIN}`}
+              onClick={() => setOpenMenu(false)}
+              className={`font-semibold hover:text-primary duration-200 transition-colors ${
+                pathname === `/${locale}/${Routes.ADMIN}`
+                  ? "text-primary"
+                  : "text-white"
+              }`}
+            >
+              {translations.navbar.admin}
+            </Link>
+          </li>
+        )}
         <li>
           <Services locale={locale} translations={translations} />
         </li>
@@ -173,13 +191,17 @@ const Services = ({
           className="!text-white border-none text-md font-semibold outline-none cursor-pointer flex items-center !gap-3"
         >
           {translations.navbar.services}
-          <span className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
+          <span
+            className={`transition-transform duration-200 ${
+              open ? "rotate-180" : ""
+            }`}
+          >
             <FaArrowDown />
           </span>
         </button>
 
         {open && (
-          <ul 
+          <ul
             className="overflow-hidden space-y-4 mt-4 text-center"
             data-aos="fade-up"
           >
@@ -209,7 +231,11 @@ const Services = ({
         <PopoverTrigger asChild>
           <button className="!text-white border-none text-xl font-semibold outline-none cursor-pointer flex items-center !gap-3">
             {translations.navbar.services}
-            <span className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
+            <span
+              className={`transition-transform duration-200 ${
+                open ? "rotate-180" : ""
+              }`}
+            >
               <FaArrowDown />
             </span>
           </button>
