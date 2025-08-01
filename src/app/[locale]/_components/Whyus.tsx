@@ -48,7 +48,7 @@ const Whyus = ({ translation }: { translation: Translations }) => {
   ];
 
   return (
-    <section className="section-gap bg-[#f5f5f5] py-5">
+    <section id="whyus" className="section-gap bg-[#f5f5f5] py-5">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>

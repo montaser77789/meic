@@ -57,7 +57,7 @@ const Navbar = ({
     {
       id: 2,
       title: translations.navbar.about,
-      href: `/${locale}/${Routes.about}`,
+      href: `/#whyus`,
     },
     {
       id: 3,
