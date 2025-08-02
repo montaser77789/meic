@@ -46,7 +46,7 @@ const Form = () => {
       }
       if (res?.ok) {
         toast("Login successful");
-        router.replace(`/en/${Routes.ADMIN}`);
+        router.replace(`/ar/${Routes.ADMIN}`);
       }
     } catch (error) {
       console.log(error);

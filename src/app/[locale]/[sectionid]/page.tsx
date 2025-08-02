@@ -13,6 +13,7 @@ import { getWhyUsBysectionId } from "@/server/db/whyusimage";
 import { getQuestion } from "@/server/db/getquestions";
 import Question from "../_components/Question";
 import ContactSection from "../_components/ContactSection";
+import Equipment from "./_components/Equipment";
 
 export default async function page({
   params,
@@ -53,17 +54,42 @@ export default async function page({
   });
   console.log(question);
 
+    const equipment = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/equipmentcatagory`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        role: "admin",
+        sectionId: section.id,
+        locale: "ar",
+      }),
+    }
+  )
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
+  console.log(equipment);
+
   return (
     <div>
       <HeroSections sections={section} translation={translations} />
-      <ServicesSection services={services} locale={locale} />
-      <WhyusSection WhyusData={WhyusData} locale={locale} />
-      <ProjectsGallerySection
-        title={translations.projects.title}
-        description={translations.projects.description}
-        images={imageUrls}
-      />
-      <Question translation={translations} questions={question} />
+
+      {equipment.length > 0 && <Equipment translations={translations} equipments={equipment} locale={locale} />}
+      {services.length > 0 && (
+        <ServicesSection services={services} locale={locale} />
+      )}
+      {WhyusData.length > 0 && (
+        <WhyusSection WhyusData={WhyusData} locale={locale} />
+      )}
+      {imageUrls.length > 0 && (
+        <ProjectsGallerySection
+          title={translations.projects.title}
+          description={translations.projects.description}
+          images={imageUrls}
+        />
+      )}
+      {question.length > 0 && (
+        <Question translation={translations} questions={question} />
+      )}{" "}
       <ContactSection translation={translations} />
     </div>
   );

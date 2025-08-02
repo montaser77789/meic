@@ -63,23 +63,24 @@ model Session {
 }
 
 model Section {
-  id             String         @id @default(cuid())
-  title_ar       String         @unique
-  title_en       String         @unique
+  id             String              @id @default(cuid())
+  title_ar       String              @unique
+  title_en       String              @unique
   description_ar String
   description_en String
   features_ar    String[]
   features_en    String[]
   image          String
-  slug           String         @unique
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
+  slug           String              @unique
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
   Services       Services[]
   galleryImages  GalleryImage[]
   sectionId      String?
   publicId       String?
   Question       Question[]
   WhyusSection   WhyusSection[]
+  Equipments     EquipmentCategory[]
 }
 
 model Services {
@@ -144,7 +145,6 @@ model WhyusSection {
   Section       Section?     @relation(fields: [sectionId], references: [id], onDelete: Cascade)
   sectionId     String?
   WhyusImage    WhyusImage[]
-  
 }
 
 model WhyusPoint {
@@ -167,4 +167,27 @@ model WhyusImage {
   updatedAt      DateTime      @updatedAt
   WhyusSection   WhyusSection? @relation(fields: [whyusSectionId], references: [id], onDelete: Cascade)
   whyusSectionId String?
+}
+
+model EquipmentCategory {
+  id         String      @id @default(cuid())
+  name_ar    String
+  name_en    String
+  section    Section?    @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId  String?
+  equipments Equipment[]
+}
+
+model Equipment {
+  id             String             @id @default(cuid())
+  image          String?
+  publicId       String?
+  title_ar       String
+  title_en       String
+  description_ar String
+  description_en String
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  category       EquipmentCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId     String?
 }

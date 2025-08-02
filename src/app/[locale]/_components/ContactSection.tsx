@@ -3,6 +3,8 @@ import React from "react";
 import { Translations } from "@/components/types/Translationx";
 
 const ContactSection = ({ translation }: { translation: Translations }) => {
+  const phoneNumber = "966554097005"; // بدون 0 في البداية مع كود الدولة
+  const whatsappLink = `https://wa.me/${phoneNumber}`;
   return (
     <section className="bg-[#F5F5F5] py-20">
       <div className="container">
@@ -16,13 +18,27 @@ const ContactSection = ({ translation }: { translation: Translations }) => {
         </div>
         <div className="flex gap-4 mt-6 w-full md:max-w-4xl mx-auto">
           <Button className="rounded-full flex-1 !py-5 md:!py-6 text-xl md:text-2xl text-black">
-            {translation.contact.button1}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              {translation.contact.button1}
+            </a>
           </Button>
           <Button
             variant="outline"
             className="rounded-full flex-1 !py-5 md:!py-6 text-xl md:text-2xl text-black"
           >
-            {translation.contact.button2}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              {translation.contact.button2}
+            </a>
           </Button>
         </div>
       </div>

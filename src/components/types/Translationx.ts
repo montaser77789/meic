@@ -97,4 +97,9 @@ export type Translations = {
     title: string;
     description: string;
   };
+  all: string;
+  equipment: {
+    title: string;
+    description: string;
+  }
 };

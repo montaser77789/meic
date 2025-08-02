@@ -24,14 +24,14 @@ export const metadata: Metadata = {
   description:
     "شركة متخصصة في الحفر والمقاولات العامة وأنظمة التكييف والصيانة، نقدم خدماتنا بجودة عالية واحترافية تغطي جميع مناطق المملكة.",
   icons: {
-    icon: "/favicon.png",
-    apple: "/logo.png",
+    icon: "https://meicgroups.com//favicon.png",
+    apple: "https://meicgroups.com//favicon.png",
   },
   openGraph: {
     title: " MEIC | حلول متكاملة للبنية التحتية",
     description:
       "خبرة واسعة في تنفيذ المشاريع من الحفر إلى التشغيل بجودة ومعايير عالمية.",
-    url: "https://example.com",
+    url: "https://meicgroups.com",
     siteName: "اسم شركتك",
     images: [
       {
@@ -67,7 +67,7 @@ export default async function RootLayout({
     <html lang={locale} dir={isArabic ? Directions.RTL : Directions.LTR}>
       <body className={`${alexandria.variable} antialiased`}>
         <NextAuthSessionProvider>
-          <WhatsAppIcon  locale={locale}/>
+          <WhatsAppIcon locale={locale} />
           <Toaster position="top-center" richColors />
           <Header />
           {children}

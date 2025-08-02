@@ -187,6 +187,47 @@ const useFormFields = ({ slug }: IFormFieldsVariables) => {
       type: "textarea",
     },
   ];
+  const equipmentCatagoryFields = (): IFormField[] => [
+    {
+      label: "اسم القسم باللغه الانجليزية",
+      name: "name_en",
+      type: "text",
+      placeholder: "ادخل اسم القسم باللغه الانجليزية",
+    },
+    {
+      label: "اسم القسم باللغه العربية",
+      name: "name_ar",
+      type: "text",
+      placeholder: "ادخل اسم القسم باللغه العربية",
+    },
+  ];
+
+  const equipmentFields = (): IFormField[] => [
+    {
+      label: "اسم المعده باللغه الانجليزية",
+      name: "title_en",
+      type: "text",
+      placeholder: "ادخل اسم المعده باللغه الانجليزية",
+    },
+    {
+      label: "اسم المعده باللغه العربية",
+      name: "title_ar",
+      type: "text",
+      placeholder: "ادخل اسم المعده باللغه العربية",
+    },
+    {
+      label: "وصف المعده باللغه الانجليزية",
+      name: "description_en",
+      type: "textarea",
+      placeholder: "ادخل وصف المعده باللغه الانجليزية",
+    },
+    {
+      label: "وصف المعده باللغه العربية",
+      name: "description_ar",
+      type: "textarea",
+      placeholder: "ادخل وصف المعده باللغه العربية",
+    },
+  ];
 
   const getFormFields = (): IFormField[] => {
     switch (slug) {
@@ -204,6 +245,10 @@ const useFormFields = ({ slug }: IFormFieldsVariables) => {
         return whyusFields();
       case `/${Routes.ADMIN}/${Pages.WHYUS}/${Routes.POINTS}`:
         return whyusPoints();
+      case `/${Routes.ADMIN}/${Pages.EQUIPMENT}`:
+        return equipmentCatagoryFields();
+      case `/${Routes.ADMIN}/${Pages.EQUIPMENT}/eqcatagoryid`:
+        return equipmentFields();
 
       default:
         return [];

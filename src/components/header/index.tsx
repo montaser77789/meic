@@ -21,7 +21,7 @@ const Header = async () => {
       <div className="container py-4">
         <div className="flex items-center justify-between border-b-2 pb-3 border-primary">
           <div>
-            <Image src={logo} alt="logo" width={100} height={100} priority />
+            <Image src={logo} alt="logo" width={70} height={70} priority />
           </div>
           <div>
             <Navbar
@@ -32,9 +32,7 @@ const Header = async () => {
             />
           </div>
           <div className="lg:flex items-center gap-4 hidden ">
-            <Button className="btn rounded-full">
-              {translations.navbar.contact}
-            </Button>
+    
             <LanguageSwitcher />
           </div>
         </div>

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import bgImage from "../../../../public/images/16fb6ac02ec32d408b1e2a37b4a78c241610b23b.jpg";
-import imageSlider from "../../../../public/images/213b851aeceb407fed5ec2ba03bbb64c5ef22c4d.jpg";
 import imageSlider2 from "../../../../public/images/93952dc9cc684e057292c349c21618c5cfc4e9fb.jpg";
 import { Button } from "@/components/ui/button";
 import Autoplay from "embla-carousel-autoplay";
@@ -82,7 +81,7 @@ const Carsoul = ({
       }}
     >
       <CarouselContent>
-        {[imageSlider, imageSlider2  , bgImage].map(
+        {[ imageSlider2  , bgImage].map(
           (img, index) => (
             <CarouselItem key={index} className="basis-2/3 md:basis-2/5">
               <div className="width-[500px] h-[200px]">

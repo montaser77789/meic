@@ -30,6 +30,7 @@ export enum Pages {
   questions = "questions",
   GALLERIES = "galleries",
   WHYUS = "whyus",
+  EQUIPMENT = "equipment",
 }
 
 export enum InputTypes {

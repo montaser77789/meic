@@ -57,12 +57,12 @@ const Navbar = ({
     {
       id: 2,
       title: translations.navbar.about,
-      href: `/#whyus`,
+      href: `/${locale}/#whyus`,
     },
     {
       id: 3,
       title: translations.navbar.ourwork,
-      href: `/#sections`,
+      href: `/${locale}/#sections`,
     },
   ];
 

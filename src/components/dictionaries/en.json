@@ -162,5 +162,10 @@
   "projects":{
     "title":"Some of Our Landscaping Projects",
     "description" :"We don't just talk about quality, we prove it with our extensive experience delivering successful projects that reflect high quality and efficiency."
+  },
+  "all" : "All",
+  "equipment":{
+    "title" :"A Wide Range of Tools to Cover Every Field",
+    "description" :"Whether you're a mechanic, contractor, or equipment supplier, we offer a wide range of tools to meet your needs, from hand tools to power tools, original and ready to ship."
   }
 }

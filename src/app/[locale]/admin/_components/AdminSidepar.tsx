@@ -36,6 +36,11 @@ function AdminSidepar({ locale }: { locale: Locale }) {
       href: `/${locale}/${Routes.ADMIN}/${Pages.WHYUS}`,
       icon: MdOutlineMiscellaneousServices,
     },
+    {
+      name: "المعدات",
+      href: `/${locale}/${Routes.ADMIN}/${Pages.EQUIPMENT}`,
+      icon: MdOutlineMiscellaneousServices,
+    },
   ];
 
   return (
